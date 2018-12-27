@@ -59,7 +59,7 @@
   margin-top: 20px;
   padding: 100px 150px;
   position: relative;
-  width: 15%;
+  flex-basis: 15%;
 }
 .card .card-text {
   position: absolute;
