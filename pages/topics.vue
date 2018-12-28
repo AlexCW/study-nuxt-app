@@ -29,13 +29,14 @@
           topics: state => state.topics.list
         })
       },
-      fetch ({ app, params }) {
-        return topicsApi.getAll()
-        .then((res) => {
-          app.store.commit('topics/setTopics', res.data)
-        }).catch(() => {
+      async fetch ({ app, params }) {
+        try {
+          let { data } = await topicsApi.getAll()
+          console.log(data);
+          app.store.commit('topics/setTopics', data)
+        } catch (err) {
           app.store.commit('errors/addError', 'There was an error retrieving the topics.')
-        })
+        }
       }
     }
 </script>
