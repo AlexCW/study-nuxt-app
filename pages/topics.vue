@@ -2,15 +2,17 @@
   <section>
     <div class="header">
       <h1 class="heading">Topics</h1>
-      <button class="button--green">Add Topic</button>
+      <nuxt-link
+        class=" button--green" 
+        to="/topics/add">
+        <a>Add Topic</a>
+      </nuxt-link>
     </div>
     <div class="cards">
-      <div 
+      <card 
         v-for="(topic, index) in topics"
         :key="index"
-        class="card">
-        <div class="card-text">Test</div>
-      </div>
+        :text="topic.title"/>
     </div>
   </section>
 </template>
@@ -18,8 +20,10 @@
 <script>
     import { mapState } from 'vuex'
     import topicsApi from '@/http/endpoints/topics';
+    import Card from '@/components/shared/elements/Card'; 
 
     export default {
+      components: { Card },
       computed: {
         ...mapState({
           topics: state => state.topics.list
@@ -41,43 +45,19 @@
   padding: 10px;
   display: flex;
 }
-
 .header .heading {
   flex: 6;
   margin: 5px 0px 0px 50px;
 }
-
 .header .button--green {
   flex: 1;
+  text-align: center; /**temp**/
 }
+
 .cards {
   display: flex;
   flex-wrap: wrap;
   margin: 0 auto;
   width: 90%;
-}
-.card {
-  background: url('/vue-logo.png') no-repeat;
-  background-position: center; 
-  background-size: cover;
-  border-radius: 4px;
-  box-shadow: 0px 0px 1px 0px darkgray;
-  align-items:flex-start;
-  color: white;
-  margin-left: 20px;
-  margin-top: 20px;
-  padding: 100px 150px;
-  position: relative;
-  flex-basis: 15%;
-}
-.card .card-text {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  padding: 5px 0px 10px 10px;
-  font-weight: 500;
-  background: black;
-  opacity: 0.5; 
-  width: 100%;
 }
 </style>
