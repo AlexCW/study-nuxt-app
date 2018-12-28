@@ -1,14 +1,15 @@
 <template>
   <section>
-    <div class="container">
+    <div class="header">
       <h1 class="heading">Topics</h1>
-      <div class="cards">
-        <div 
-          v-for="(topic, index) in topics"
-          :key="index"
-          class="card">
-          <div class="card-text">Test</div>
-        </div>
+      <button class="button--green">Add Topic</button>
+    </div>
+    <div class="cards">
+      <div 
+        v-for="(topic, index) in topics"
+        :key="index"
+        class="card">
+        <div class="card-text">Test</div>
       </div>
     </div>
   </section>
@@ -36,12 +37,18 @@
 </script>
 
 <style>
-.heading {
+.header {
+  padding: 10px;
+  display: flex;
+}
+
+.header .heading {
+  flex: 6;
   margin: 5px 0px 0px 50px;
 }
-.container {
-  min-height: 100vh;
-  padding: 10px;
+
+.header .button--green {
+  flex: 1;
 }
 .cards {
   display: flex;
