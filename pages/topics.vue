@@ -3,37 +3,34 @@
     <div class="container">
       <h1 class="heading">Topics</h1>
       <div class="cards">
-        <div class="card">
-          <div class="card-text">Test</div>
-        </div>
-        <div class="card">
-          <div class="card-text">Test</div>
-        </div>
-        <div class="card">
-          <div class="card-text">Test</div>
-        </div>
-        <div class="card">
-          <div class="card-text">Test</div>
-        </div>
-        <div class="card">
-          <div class="card-text">Test</div>
-        </div>
-        <div class="card">
-          <div class="card-text">Test</div>
-        </div>
-        <div class="card">
-          <div class="card-text">Test</div>
-        </div>
-        <div class="card">
-          <div class="card-text">Test</div>
-        </div>
-        <div class="card">
+        <div 
+          v-for="(topic, index) in topics"
+          :key="index"
+          class="card">
           <div class="card-text">Test</div>
         </div>
       </div>
     </div>
   </section>
 </template>
+
+<script>
+    import { mapState } from 'vuex'
+
+    export default {
+      computed: {
+        ...mapState({
+          topics: state => state.topics.list
+        })
+      },
+      fetch ({ app, params }) {
+        return app.$axios.get('https://7b41b63a-3725-47ce-a8ae-c448767e96df.mock.pstmn.io/topics')
+        .then((res) => {
+          app.store.commit('topics/setTopics', res.data)
+        })
+      }
+    }
+</script>
 
 <style>
 .heading {
@@ -45,8 +42,9 @@
 }
 .cards {
   display: flex;
-  justify-content: center;
   flex-wrap: wrap;
+  margin: 0 auto;
+  width: 90%;
 }
 .card {
   background: url('/vue-logo.png') no-repeat;
@@ -54,6 +52,7 @@
   background-size: cover;
   border-radius: 4px;
   box-shadow: 0px 0px 1px 0px darkgray;
+  align-items:flex-start;
   color: white;
   margin-left: 20px;
   margin-top: 20px;
@@ -68,7 +67,7 @@
   padding: 5px 0px 10px 10px;
   font-weight: 500;
   background: black;
-  opacity: 0.6; 
+  opacity: 0.5; 
   width: 100%;
 }
 </style>
