@@ -28,6 +28,8 @@
         return topicsApi.getAll()
         .then((res) => {
           app.store.commit('topics/setTopics', res.data)
+        }).catch(() => {
+          app.store.commit('errors/addError', 'There was an error retrieving the topics.')
         })
       }
     }
