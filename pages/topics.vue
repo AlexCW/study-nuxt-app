@@ -24,8 +24,9 @@
           topics: state => state.topics.list
         })
       },
-      fetch ({ app }) {
-        return topicsApi.getAll().then((res) => {
+      fetch ({ app, params }) {
+        return topicsApi.getAll()
+        .then((res) => {
           app.store.commit('topics/setTopics', res.data)
         })
       }
