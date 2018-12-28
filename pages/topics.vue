@@ -16,6 +16,7 @@
 
 <script>
     import { mapState } from 'vuex'
+    import topicsApi from '@/http/endpoints/topics';
 
     export default {
       computed: {
@@ -23,9 +24,8 @@
           topics: state => state.topics.list
         })
       },
-      fetch ({ app, params }) {
-        return app.$axios.get('https://7b41b63a-3725-47ce-a8ae-c448767e96df.mock.pstmn.io/topics')
-        .then((res) => {
+      fetch ({ app }) {
+        return topicsApi.getAll().then((res) => {
           app.store.commit('topics/setTopics', res.data)
         })
       }
