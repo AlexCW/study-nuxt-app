@@ -79,6 +79,3 @@ dist
 
 # IDE
 .idea
-
-#jest
-tests/snapshots/__snapshots__/*
