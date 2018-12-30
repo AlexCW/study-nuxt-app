@@ -10,7 +10,9 @@
     "start": "nuxt start",
     "generate": "nuxt generate",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
-    "precommit": "npm run lint"
+    "precommit": "npm run lint",
+    "test": "ava --serial --verbose",
+    "test-watch": "ava --watch"
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.0.0",
@@ -23,6 +25,18 @@
     "babel-eslint": "^8.2.1",
     "eslint": "^5.0.1",
     "eslint-loader": "^2.0.0",
-    "eslint-plugin-vue": "^4.0.0"
+    "eslint-plugin-vue": "^4.0.0",
+    "ava": "^0.19.1",
+    "jsdom": "^11.0.0"
+  },
+  "ava": {
+    "files": [
+			"tests/**/*.js"
+    ],
+    "sources": [
+			"**/*.{js}"
+    ],
+    "compileEnhancements": false,
+    "cache": true
   }
 }

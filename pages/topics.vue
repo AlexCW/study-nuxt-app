@@ -3,10 +3,8 @@
     <div class="header">
       <h1 class="heading">Topics</h1>
       <nuxt-link
-        class=" button--green" 
-        to="/topics/add">
-        <a>Add Topic</a>
-      </nuxt-link>
+        class="add-topic button--green" 
+        to="/topics/add">Add Topic</nuxt-link>
     </div>
     <div class="cards">
       <card 
@@ -32,7 +30,6 @@
       async fetch ({ app, params }) {
         try {
           let { data } = await topicsApi.getAll()
-          console.log(data);
           app.store.commit('topics/setTopics', data)
         } catch (err) {
           app.store.commit('errors/addError', 'There was an error retrieving the topics.')
