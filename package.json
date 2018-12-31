@@ -30,10 +30,12 @@
     "eslint": "^5.0.1",
     "eslint-loader": "^2.0.0",
     "eslint-plugin-vue": "^4.0.0",
-    "jsdom": "^11.0.0",
     "jest": "^23.6.0",
     "jest-serializer-vue": "^2.0.2",
+    "jsdom": "^11.0.0",
+    "node-sass": "^4.11.0",
     "nodemon": "^1.11.0",
+    "sass-loader": "^7.1.0",
     "vue-jest": "^3.0.2"
   },
   "ava": {
