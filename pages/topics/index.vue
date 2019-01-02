@@ -3,8 +3,8 @@
     <div class="header">
       <h1 class="heading">Topics</h1>
       <nuxt-link
-        class="add-topic button--green" 
-        to="/topics/add">Add Topic</nuxt-link>
+        class="add-topic button button--green" 
+        to="/topics/add"><span>Add Topic</span></nuxt-link>
     </div>
     <div class="cards">
       <card 
