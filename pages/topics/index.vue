@@ -30,9 +30,12 @@
       async fetch ({ app, params }) {
         try {
           let { data } = await topicsApi.getAll()
-          app.store.commit('topics/setTopics', data)
+          app.store.dispatch('topics/setTopics', data)
         } catch (err) {
-          app.store.commit('errors/addError', 'There was an error retrieving the topics.')
+          app.store.dispatch(
+            'alerts/addError',
+            'There was an error retrieving the topics.'
+          )
         }
       }
     }

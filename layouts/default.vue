@@ -6,10 +6,10 @@
       </header>
     </div>
     <div 
-      v-for="(error, index) in errors"
+      v-for="(alert, index) in alerts"
       :key="index"
-      class="alert alert--error">
-      {{ error }}
+      :class="alert.class">
+      {{ alert.message }}
     </div>
     <nuxt/>
   </div>
@@ -25,7 +25,7 @@ export default {
   },
   computed: {
     ...mapState({
-      errors: state => state.errors.all
+      alerts: state => state.alerts.all,
     })
   },
 }
@@ -66,6 +66,10 @@ header{
 
 .alert--error {
   background: red;
+}
+
+.alert--success {
+  background: green
 }
 
 .header-container {
