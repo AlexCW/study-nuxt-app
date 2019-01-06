@@ -47,6 +47,7 @@
   import topicsApi from '@/http/endpoints/topics';
 
   export default {
+      inject: ['$validator'],
       data () {
         return {
           topic: {
@@ -56,12 +57,10 @@
           }
         }
       },
-      asyncData(context){
-      },
       methods: {
         async saveTopic() {
           if(await this.$validator.validateAll() === false) {
-            return false;
+            return false
           }
 
           try {
