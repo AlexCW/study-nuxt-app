@@ -9,6 +9,7 @@
           <div class="field">
             <label for="title">Title</label>
             <input 
+              v-validate="'required'"
               id="title"
               v-model="topic.title"
               class="textbox"
@@ -55,8 +56,14 @@
           }
         }
       },
+      asyncData(context){
+      },
       methods: {
         async saveTopic() {
+          if(await this.$validator.validateAll() === false) {
+            return false;
+          }
+
           try {
             let topic = await topicsApi.addTopic(this.topic)
             this.$store.dispatch('topics/addTopic', topic.data.data)
