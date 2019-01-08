@@ -7,21 +7,23 @@
       <form>
         <fieldset>
           <div class="field">
-            <label for="title">Title</label>
+            <label for="title">Title *</label>
             <input 
-              v-validate="'required'"
+              v-validate="'required:true'"
               id="title"
               v-model="topic.title"
               class="textbox"
               type="text" 
               name="title">
+            <span v-show="errors.has('title')">{{ errors.first('title') }}</span>
           </div>
           <div class="field">
-            <label for="description">Description</label>
+            <label for="description">Description *</label>
             <textarea
               id="description"
               v-model="topic.description"
               name="size"/>
+            <span v-show="errors.has('description')">{{ errors.first('description') }}</span>
           </div>
           <div class="field">
             <label for="image">Image</label>
@@ -45,6 +47,7 @@
 
 <script>
   import topicsApi from '@/http/endpoints/topics';
+  import { ErrorBag } from 'vee-validate';
 
   export default {
       inject: ['$validator'],
@@ -57,9 +60,16 @@
           }
         }
       },
+      computed: {
+        errors: function() {
+          return new ErrorBag()
+        }
+      },
       methods: {
         async saveTopic() {
           if(await this.$validator.validateAll() === false) {
+                      console.log(this.errors.has('aaa'))
+
             return false
           }
 
