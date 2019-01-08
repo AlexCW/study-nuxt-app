@@ -20,6 +20,7 @@
           <div class="field">
             <label for="description">Description *</label>
             <textarea
+              v-validate="'required:true'"
               id="description"
               v-model="topic.description"
               name="size"/>
