@@ -26,13 +26,7 @@
               name="size"/>
             <span v-show="errors.has('description')">{{ errors.first('description') }}</span>
           </div>
-          <div class="field">
-            <label for="image">Image</label>
-            <input
-              id="image"
-              type="file"
-              name="image">
-          </div>
+          <FilePreview/>
           <div class="field field--button">
             <a 
               class="button"
@@ -49,9 +43,13 @@
 <script>
   import topicsApi from '@/http/endpoints/topics';
   import { ErrorBag } from 'vee-validate';
+  import FilePreview from '~/components/shared/elements/FilePreview.vue'
 
   export default {
       inject: ['$validator'],
+      components: {
+        FilePreview
+      },
       data () {
         return {
           topic: {
