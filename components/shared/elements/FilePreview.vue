@@ -42,13 +42,15 @@
           let file = this.$refs.image.files[0];
           let reader  = new FileReader();
           
-          reader.addEventListener("load", function () {
-            this.showPreview = true;
-            this.imagePreview = reader.result;
-          }.bind(this), false);
+          if (file && file.type.match('image.*')) {
+            reader.addEventListener("load", function () {
+                this.showPreview = true;
+                this.imagePreview = reader.result;
+              }.bind(this), false);
 
-          reader.readAsDataURL( file );
-        }
+              reader.readAsDataURL( file );
+            }
+          }
       }
     }
 </script>

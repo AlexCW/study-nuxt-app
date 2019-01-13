@@ -12,7 +12,7 @@
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "precommit": "npm run lint",
     "ava": "ava -v",
-    "jest": "jest ."
+    "jest": "jest . --watch --verbose"
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.0.0",
