@@ -41,16 +41,16 @@
         handleFileUpload () {
           let file = this.$refs.image.files[0];
           let reader  = new FileReader();
-          
-          if (file && file.type.match('image.*')) {
-            reader.addEventListener("load", function () {
-                this.showPreview = true;
-                this.imagePreview = reader.result;
-              }.bind(this), false);
 
-              reader.readAsDataURL( file );
-            }
+          if (file && file.type.match('image.*')) {
+
+            reader.addEventListener("load", function () {
+              this.showPreview = true;
+              this.imagePreview = reader.result;
+            }.bind(this), false);
+            reader.readAsDataURL(file)
           }
+        }
       }
     }
 </script>
