@@ -23,7 +23,7 @@
               v-validate="'required:true'"
               id="description"
               v-model="topic.description"
-              name="size"/>
+              name="description"/>
             <span v-show="errors.has('description')">{{ errors.first('description') }}</span>
           </div>
           <FilePreview/>
@@ -67,8 +67,6 @@
       methods: {
         async saveTopic() {
           if(await this.$validator.validateAll() === false) {
-                      console.log(this.errors.has('aaa'))
-
             return false
           }
 
