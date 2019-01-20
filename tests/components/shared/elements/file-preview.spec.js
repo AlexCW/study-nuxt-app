@@ -47,7 +47,7 @@ describe('FilePreview Component', () => {
     
       const fileInput = wrapper.find('input[type="file"]')
       
-      const path = 'test.png'
+      const path = '/Users/alexwilliams/Desktop/test.png'
       
       const blob = new Blob(new fs.readFileSync(path), {type: "image/png"})
       
@@ -58,8 +58,11 @@ describe('FilePreview Component', () => {
       }
       
       fileInput.trigger('change')
-
-      expect(wrapper.vm.$data.showPreview).toEqual(true)
+      
+      //Set timeout not ideal here but only way to test at the moment.
+      window.setTimeout(() => {
+        expect(wrapper.vm.$data.showPreview).toEqual(true)
+      }, 5000)
   })
   
   test('test properties correctly override', () => {
